@@ -10,5 +10,17 @@ module.exports = [
     ingredients: ["un", "kərə yağı", "süd"],
     instructions: "Xəmir yoğurun, içlik əlavə edib bişirin.",
     image: "uploads/kete.png"
+  },
+   {
+    title: "tort",
+    ingredients: ["un", "kərə yağı", "süd"],
+    instructions: "Xəmir yoğurun, içlik əlavə edib bişirin.",
+    image: "uploads/kete.png"
+  },
+   {
+    title: "sirniyyat",
+    ingredients: ["un", "kərə yağı", "süd"],
+    instructions: "Xəmir yoğurun, içlik əlavə edib bişirin.",
+    image: "uploads/kete.png"
   }
 ];

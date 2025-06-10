@@ -11,12 +11,18 @@ const app = express();
 
 // ✅ MongoDB ilə bağlantı
 connectDB();
+app.use(
+  cors({
+    origin: [/localhost:\d+$/], // bütün localhost portlara icazə verir
+    credentials: true,
+  })
+);
 
-// ✅ Middlewares
-app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
-  credentials: true
-}));
+
+
+
+
+
 app.use(express.json()); // JSON formatlı məlumatları qəbul et
 app.use(cookieParser()); // Cookie-ləri oxumaq üçün
 app.use('/uploads', express.static('uploads')); // Şəkillərin göstərilməsi üçün
