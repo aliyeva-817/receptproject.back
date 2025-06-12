@@ -7,7 +7,8 @@ module.exports = (req, res, next) => {
   const token = authHeader.split(' ')[1];
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403); // Token yanlışdırsa
-    req.user = user;
+
+    req.userId = user.id; // ✅ Dəyişiklik BURADA
     next();
   });
 };

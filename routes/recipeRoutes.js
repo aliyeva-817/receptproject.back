@@ -3,11 +3,15 @@ const router = express.Router();
 const recipeController = require('../controllers/recipeController');
 const verifyToken = require('../middlewares/verifyToken');
 const upload = require('../middlewares/upload');
-const Recipe = require('../models/Recipe'); // <-- Əlavə etdin
+const Recipe = require('../models/Recipe');
 
+// Resept yarat
 router.post('/', verifyToken, upload.single('image'), recipeController.createRecipe);
+
+// Axtarış
 router.get('/search', verifyToken, recipeController.searchRecipes);
 
+// Ingredient filtrinə görə reseptlər
 router.get('/', async (req, res) => {
   const { ingredient } = req.query;
 
@@ -16,7 +20,7 @@ router.get('/', async (req, res) => {
   if (ingredient) {
     const ingredientsArray = ingredient.split(',').map(i => i.trim());
     filter = {
-      ingredients: { $all: ingredientsArray }  // Bütün ingredientlər uyğun olmalıdır
+      ingredients: { $all: ingredientsArray }
     };
   }
 
@@ -29,6 +33,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// ✅ Yeni əlavə: ID-yə görə resept detalı
+router.get('/:id', recipeController.getRecipeById);
 
 module.exports = router;
-
